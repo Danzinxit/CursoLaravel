@@ -1,0 +1,49 @@
+/* Reset Básico e Estilos Globais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Um container para centralizar o conteúdo e dar um visual mais limpo */
+.main-container {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Tipografia */
+h1 {
+  color: #e74c3c; /* Um tom de vermelho mais suave */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.7; /* Melhora a legibilidade de parágrafos */
+}
+
+/* Estilos para os itens gerados em loops, para melhor visualização */
+.list-item {
+  padding: 0.75rem;
+  border-bottom: 1px solid #eee;
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+.list-item:nth-child(even) {
+    background-color: #f9f9f9; /* Listras para facilitar a leitura */
+}

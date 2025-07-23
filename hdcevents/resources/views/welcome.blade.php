@@ -1,14 +1,18 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="/img/cruzeiro.svg">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/scripts.js"></script>
 </head>
 <body>
     <div>
 
         <h1>ola</h1>
+        <img src="/img/palestra.jpg" alt="">
         @if(10 > 15)
             <p>A condicao e true</p>
         @else <p>A condicao e false</p>
