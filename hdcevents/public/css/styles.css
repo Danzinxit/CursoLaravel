@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Roboto';
 }
 
 body {
@@ -46,4 +46,10 @@ p {
 
 .list-item:nth-child(even) {
     background-color: #f9f9f9; /* Listras para facilitar a leitura */
+}
+ul{
+   margin-left: 20%;
+}
+#navbar img{
+    width: 50%;
 }

@@ -1,28 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/scripts.js"></script>
-</head>
-<body>
+@extends('layouts.main')
 
-    <h1>
-        Tela de produtos
-    </h1>
-    <div>
-        <ul>
-            <li>
-               <a href="/">Home</a>
-            </li>
-            <li>
-                <a href="/contact">Contato</a>
-            </li>
-        </ul>
+@section('title', 'Produtos')
 
-    </div>
+@section('content')
 
-</body>
-</html>
+
+   @if ($busca != '')
+<p>O usuario esta buscando por {{$busca}}</p>
+@endif
+
+
+@endsection
