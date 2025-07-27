@@ -216,3 +216,83 @@ footer p {
         width: 0%;
     }
 }
+
+/* EVENT PAGE */
+
+/* Estilos da página de detalhes do evento (events/show) */
+
+/* Container principal da imagem e informações */
+#image-container,
+#info-container {
+  margin-bottom: 20px;
+}
+
+/* Imagem do evento */
+#image-container img {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Container de informações do evento */
+#info-container {
+  padding-left: 30px;
+}
+
+#info-container h1 {
+  font-size: 36px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+/* Parágrafos com ícones (local, participantes, dono) */
+#info-container p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#info-container ion-icon {
+  font-size: 24px;
+  color: #F2A340; /* Cor de destaque para os ícones */
+  margin-right: 10px;
+}
+
+/* Botão de confirmar presença */
+#event-submit {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 25px;
+}
+
+/* Container da descrição do evento */
+#description-container {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #CCC; /* Linha para separar a descrição */
+}
+
+#description-container h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.event-description {
+  color: #333;
+  line-height: 1.7;
+  font-size: 16px;
+}
+/*
+ITEMS  */
+
+#item-list{
+    list-style: none;
+    padding-left: 0;
+}
+
+#items-list-li{
+    display: flex;
+}

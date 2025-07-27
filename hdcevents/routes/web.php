@@ -31,6 +31,8 @@ Route::get('/', [EventController::class, 'index' /* Nome da class que e EventCon
 //get e receber dados
 Route::get('/events/create', [EventController::class, 'create' /* esse entre aspas e o nome do metodo */ ] );
 
+Route::get('events/{id}', [EventController::class, 'show']); //o show e para mostrar um registro especifico do banco
+
 //ROTA DE POST PARA ENVIAR DADOS DO FORMULARIO
 //E so /events poque ele vai enviar dados e nao trazer dados
 Route::post('/events' , [EventController::class, 'store']);

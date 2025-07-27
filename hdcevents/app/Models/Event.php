@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 //usa URM Eloqeunt
 class Event extends Model
 {
-
+    protected $casts = //casts da model
+    [
+        'items' => 'array'
+    ];
 }

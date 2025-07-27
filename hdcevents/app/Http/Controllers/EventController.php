@@ -27,7 +27,27 @@ class EventController extends Controller
       $event->city = $request->city;
       $event->private = $request->private;
       $event->description = $request->description;
+      $event->items = $request->items;
 
+      // Lógica para upload de imagem
+      // Verifica se um arquivo de imagem foi enviado no formulário e se o upload é válido.
+      if ($request->hasFile('image') && $request->file('image')->isValid()) {
+
+          // Pega o arquivo de imagem que veio na requisição.
+          $requestImage = $request->image;
+
+          // Pega a extensão do arquivo (ex: jpg, png).
+          $extension = $requestImage->extension();
+
+          // Cria um nome de arquivo único para a imagem para evitar nomes duplicados.
+          $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+
+          // Move o arquivo de imagem para o diretório 'public/img/events'.
+          $requestImage->move(public_path('img/events'), $imageName);
+
+          // Atribui o nome da imagem ao campo 'image' do objeto $event, para ser salvo no banco.
+          $event->image = $imageName;
+      }
       $event->save(); //para salvar no banco
 
       //REDIRIONAR PARA UMA PAGINA QUE E A HOME
@@ -35,6 +55,12 @@ class EventController extends Controller
     }
     public function contact(Request $request){
             $contact = new Event;
+    }
+
+    public function show($id){
+        $event = Event::findOrFail($id);
+
+        return view('events.show' , ['event' => $event]); //esse event e da model Event
     }
 
 
