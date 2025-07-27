@@ -17,13 +17,14 @@
     </strong>
 </p>
     <div id="cards-container" class="row">
+       {{--  $events como $event --}}
         @foreach ( $events as $event ){{-- Essa variavel $events vem la do controller EventController que faz conexao com banco de dados por isso estou usando o title em baixo --}}
          <div class="card col-md-3">
             <img src="/img/palestra.jpg" alt="{{$event->title}}">
             <div class="card-body">
                 <div class="card-date">10/09/2020</div>
                 <h5 class="card-title">{{$event->title}}</h5>
-                <p class="card-participantes"> 222PARTICIPANTES</p>
+                <p class="card-participantes"> PARTICIPANTES</p>
                 <a href="#" class="btn btn-primary">Saber mais</a>
             </div>
          </div>

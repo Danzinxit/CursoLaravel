@@ -37,7 +37,7 @@ rel="stylesheet">
                 <a href="/login"class="nav-link">Entrar</a>
             </li>
              <li>
-                <a href="/login"class="nav-link">Entrar</a>
+                <a href="/contact"class="nav-link">Contato</a>
             </li>
         </ul>
     </div>

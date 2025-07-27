@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController; //conectar ao EventController
-
-
 //REGRAS :
 /* 1. GET
 O que faz: Solicita dados do servidor.
@@ -29,11 +27,12 @@ PUT: atualiza um recurso existente (e se não existir, pode criar dependendo da 
 
 
 //O / aqui e o nome que vai querer ser chamada por exemplo no link
-Route::get('/', [EventController::class, 'index'] ); //Conectar ao
+Route::get('/', [EventController::class, 'index' /* Nome da class que e EventController e index que e o metodo */] ); //Conectar ao
 //get e receber dados
 Route::get('/events/create', [EventController::class, 'create' /* esse entre aspas e o nome do metodo */ ] );
 
 //ROTA DE POST PARA ENVIAR DADOS DO FORMULARIO
+//E so /events poque ele vai enviar dados e nao trazer dados
 Route::post('/events' , [EventController::class, 'store']);
 
 Route::get('/contact', function () {

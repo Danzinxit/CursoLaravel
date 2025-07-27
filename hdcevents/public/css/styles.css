@@ -144,13 +144,75 @@ footer p {
 #event-create-container textarea{
     font-size: 15px;
 }
-/* Pop-up de mensagem */
+/* Pop-up de mensagem melhorado */
 .msg-popup {
     position: fixed;
     top: 20px;
-    right: 20px;
-    z-index: 1050; /* Para ficar sobre outros elementos */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza horizontalmente */
+    z-index: 1050;
     width: auto;
-    max-width: 350px;
-    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+    max-width: 90%;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    animation: slideIn 0.5s ease-out forwards, slideOut 0.5s ease-in 4.5s forwards;
+    overflow: hidden; /* Para a barra de progresso não sair */
+}
+
+/* Ícone dentro do pop-up */
+.msg-popup ion-icon {
+    font-size: 1.8rem;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Barra de progresso */
+.msg-popup::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    width: 100%;
+    background-color: rgba(0,0,0,0.2);
+    animation: progressBar 4s linear 0.5s forwards; /* Inicia após a animação de entrada */
+}
+
+/* Animação de entrada (deslizar de cima) */
+@keyframes slideIn {
+    from {
+        top: -100px;
+        opacity: 0;
+    }
+    to {
+        top: 20px;
+        opacity: 1;
+    }
+}
+
+/* Animação de saída (deslizar para cima) */
+@keyframes slideOut {
+    from {
+        top: 20px;
+        opacity: 1;
+    }
+    to {
+        top: -100px;
+        opacity: 0;
+    }
+}
+
+/* Animação da barra de progresso */
+@keyframes progressBar {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
 }

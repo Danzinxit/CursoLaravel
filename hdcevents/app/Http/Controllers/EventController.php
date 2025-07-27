@@ -33,6 +33,9 @@ class EventController extends Controller
       //REDIRIONAR PARA UMA PAGINA QUE E A HOME
       return redirect('/')->with('msg' , 'Evento criado com sucesso!') ;
     }
+    public function contact(Request $request){
+            $contact = new Event;
+    }
 
 
 }
