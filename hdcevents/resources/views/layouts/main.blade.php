@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title> <!-- muda dinamicamente--> {{-- --}}
     <link rel="icon" type="image/x-icon" href="/img/cruzeiro.svg">
-    <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/scripts.js"></script>
 
     <!-- FONTE GOOGLE--> {{-- --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +14,10 @@ rel="stylesheet">
 
 <!-- bootstrap--> {{-- --}}
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <!-- CSS da aplicação -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/scripts.js"></script>
 </head>
 <body>
 <header>
@@ -41,7 +43,18 @@ rel="stylesheet">
     </div>
 </nav>
 </header>
-   @yield('content') <!--area de conteudo de todas as paginas--> {{-- --}}
+
+<main>
+    <div class="container-fluid">
+       <div class="row">
+        @if(session('msg'))
+        <div class="alert alert-success msg-popup" role="alert">{{ session('msg') }}</div>
+        @endif
+         @yield('content') <!--area de conteudo de todas as paginas-->
+       </div>
+    </div>
+</main>
+  {{-- --}}
     <footer>
         <p>DANZIN EVENTS &copy; 2025
 

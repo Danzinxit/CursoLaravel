@@ -1,4 +1,4 @@
-/* Reset Básico e Estilos Globais */
+/* GENERAL */
 * {
   margin: 0;
   padding: 0;
@@ -7,49 +7,150 @@
 }
 
 body {
-  background-color: #f4f4f4;
-  color: #333;
-  line-height: 1.6;
+min-height: 100vh; /* tela usuario o minimo  */
+padding-bottom: 100px;
+position: relative;
+}
+header{
+    background-color: #FFF;
+    border-bottom: 1px solid #CCC;
+}
+.row{
+    margin : 0;
+}
+.container-fluid{
+    padding:  0;
+}
+.btn-primary{
+    background-color: #F2A340;
+    border: 2px solid #C28008;
+}
+.btn-primary:hover{
+    background-color: #C28008;
+    border-color: #C28008;
 }
 
-/* Um container para centralizar o conteúdo e dar um visual mais limpo */
-.main-container {
-  max-width: 960px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+/*navbar*/
 
-/* Tipografia */
-h1 {
-  color: #e74c3c; /* Um tom de vermelho mais suave */
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-p {
-  margin-bottom: 1rem;
-  line-height: 1.7; /* Melhora a legibilidade de parágrafos */
-}
-
-/* Estilos para os itens gerados em loops, para melhor visualização */
-.list-item {
-  padding: 0.75rem;
-  border-bottom: 1px solid #eee;
-}
-
-.list-item:last-child {
-  border-bottom: none;
-}
-
-.list-item:nth-child(even) {
-    background-color: #f9f9f9; /* Listras para facilitar a leitura */
-}
-ul{
-   margin-left: 20%;
-}
 #navbar img{
+width: 50px;
+}
+#navbar{
+    justify-content: space-between;
+    background-color: white;
+    padding: 5px 0;
+}
+#navbar a{
+    font-size: 14px;
+    color: #757575;
+}
+#navbar a:hover {
+    color: #F2A340;
+}
+
+
+/*Search Container */
+
+#search-container{
+    background-image: url("../img/show.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    padding: 50px;
+    text-align: center;
+}
+#search-container h1{
+    color: #F2A340;
+    margin-bottom: 30px;
+    font-weight: 900;
+}
+
+#search-container form {
     width: 50%;
+    margin: 0 auto;
+}
+
+#events-container{
+    padding: 50px;
+}
+
+#events-container h2{
+    margin-bottom: 10px; /*afastar os cards*/
+}
+
+#events-container .subtitle{
+    color: #757575;
+    margin-bottom: 30px;
+}
+
+.cards-container{
+    display: flex;
+}
+#events-container card{
+    flex: 1 1 0;
+    max-width: 25px;
+    border-radius: 10px;
+    padding: 0;
+    margin: 5px; /*espaçar os cards*/
+}
+
+#events-container img{
+    max-height: 150px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card .card-date {
+    font-size: 12px;
+    color: #CCC;
+}
+.card .card-title {
+    color: #212121;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px; /*afastar as informacoes*/
+}
+.card-participantes{
+    font-size: 14px;
+    color: #757575;
+}
+
+/*FOOTER*/
+
+footer{
+    text-align: center;
+    background-color: #353E48;
+    color: #FFF;
+    padding: 30px; /*aproximar textos do centro */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+footer p {
+    margin-bottom : 0;
+}
+
+
+/* EVENT CREATE PAGE */
+
+#event-create-container{
+    padding: 30px;
+}
+#event-create-container label{
+    font-weight: bold;
+}
+#event-create-container input,
+#event-create-container select,
+#event-create-container textarea{
+    font-size: 15px;
+}
+/* Pop-up de mensagem */
+.msg-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050; /* Para ficar sobre outros elementos */
+    width: auto;
+    max-width: 350px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.1);
 }

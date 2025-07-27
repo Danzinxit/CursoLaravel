@@ -2,50 +2,34 @@
 @section('title' , 'DANZIN EVENTS')
 @section('content')
 
-   <div>
-
-        <h1>ola</h1>
-        <img src="/img/palestra.jpg" alt="">
-        @if(10 > 15)
-            <p>A condicao e true</p>
-        @else <p>A condicao e false</p>
-            @endif
-
-            <p>{{$nome}}</p>
-            @if($nome == "Daniel")
-            <p>o nome e Daniel e ele tem {{$idade}} anos e trabalha com {{$trabalho}}</p>
-            @elseif($nome == "Matheus")
-            <p>o nome e Matheus e ele tem {{$idade}} anos</p>
-            @else
-            <p>O nome nao e Matheus</p>
-            @endif
-
-            @for ($i = 0; $i < count($array);$i++)
-                <p>{{ $array[$i] }} - {{$i}}</p>
-                @if ($i == 2)
-                    <p>O i e {{$i}}</p>
-                @endif
-            @endfor
-            @foreach ($array2 as $valores )
-                {{$loop->index}} <!-- Loop do foreach--> {{-- --}}
-                <p>{{$valores}}</p>
-            @endforeach
-            <!-- Outro exemplo foreach--> {{-- --}}
-            @foreach ($vetor as $estado=> $capital )
-                <p>A capital de {{$estado}} e {{$capital}} </p>
-            @endforeach
-            @php
-            $name = "Daniel";
-            echo $name;
-            @endphp
-            <!-- O que esta emm baixo e para o comentario nao aparecer no console -->
-            {{-- --}}
+<div id="search-container" class="col-md-12">
+    <h1>Busque um evento</h1>
+    <form action="">
+        <input type="text" id="search" class="form-control" placeholder="Procurar...">
+        <ion-icon name="search-outline"></ion-icon>
+    </form>
+</div>
+<div id="events-container" class="col-md-12">
+    <h2>Proximos Eventos</h2>
+    <p class="subtitle">
+     <strong>
+        Veja os eventos do proximos dias :
+    </strong>
+</p>
+    <div id="cards-container" class="row">
+        @foreach ( $events as $event ){{-- Essa variavel $events vem la do controller EventController que faz conexao com banco de dados por isso estou usando o title em baixo --}}
+         <div class="card col-md-3">
+            <img src="/img/palestra.jpg" alt="{{$event->title}}">
+            <div class="card-body">
+                <div class="card-date">10/09/2020</div>
+                <h5 class="card-title">{{$event->title}}</h5>
+                <p class="card-participantes"> 222PARTICIPANTES</p>
+                <a href="#" class="btn btn-primary">Saber mais</a>
+            </div>
+         </div>
+        @endforeach
     </div>
+</div>
+
+
 @endsection
-
-<style>
-
-    body{
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-    }
-</style>

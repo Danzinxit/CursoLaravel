@@ -1,0 +1,68 @@
+COMANDOS LARAVEL :
+
+Comandos Básicos do Artisan
+php artisan serve              # Inicia o servidor local do Laravel
+php artisan list               # Lista todos os comandos disponíveis
+php artisan help nome_comando  # Mostra ajuda detalhada sobre um comando
+
+Configuração e Cache
+php artisan config:cache       # Cria cache das configs (.env, config/) para performance
+php artisan config:clear       # Limpa o cache de configurações
+php artisan route:cache        # Gera cache das rotas
+php artisan route:clear        # Limpa cache das rotas
+php artisan view:clear         # Limpa o cache de views compiladas
+php artisan cache:clear        # Limpa todo o cache da aplicação
+
+Migrações e Banco de Dados
+php artisan make:migration create_products_table #criar tabela
+php artisan migrate:status
+php artisan migrate            # Executa todas as migrações pendentes
+php artisan migrate:rollback   # Desfaz a última migração
+php artisan migrate:reset      # Reseta TODAS as migrações (faz o rollback e o migrate)
+php artisan migrate:fresh      # Dropa todas as tabelas e roda todas migrações do zero
+php artisan db:seed            # Popula o banco de dados com dados dos seeders
+php artisan migrate --seed     # Executa migrações + seeders juntos
+php artisan make:migration add_category_to_products_table #adicionar um campo para a tabela products
+
+Make (Gerar Arquivos Automáticos)
+php artisan make:controller NomeController       # Cria um novo controller
+php artisan make:model Nome                      # Cria um novo model (primeira letra sempre maiuscula)
+php artisan make:model Nome -mcr                 # Cria model + migration + controller + resource
+php artisan make:migration create_tabela         # Cria uma nova migração
+php artisan make:seeder NomeSeeder               # Cria um seeder
+php artisan make:factory NomeFactory             # Cria uma factory
+php artisan make:middleware NomeMiddleware       # Cria um middleware
+php artisan make:request NomeRequest             # Cria uma classe de validação de request
+php artisan make:observer NomeObserver           # Cria um observer
+php artisan make:event NomeEvent                 # Cria um evento
+php artisan make:listener NomeListener           # Cria um listener
+php artisan make:job NomeJob      
+               # Cria um Job (fila)
+Tinker
+php artisan tinker             # Abre console interativo para testar código Laravel/PHP
+
+Filas (Jobs/Queue)
+php artisan queue:work         # Processa as filas de jobs
+php artisan queue:listen       # Escuta filas em tempo real (menos performático)
+php artisan queue:retry all    # Retenta jobs que falharam
+
+
+Outros úteis
+php artisan storage:link       # Cria link simbólico entre storage/app/public e public/storage
+php artisan optimize           # Otimiza (gera caches para configs/rotas/views)
+
+
+
+
+
+
+
+Explicação:
+O método up() define as alterações que serão aplicadas ao banco (criar tabela, adicionar coluna, etc.).
+
+O método down() deve conter o código para reverter (desfazer) o que foi feito no up().
+
+Quando você executa:
+php artisan migrate:rollback
+
+O Laravel chama o down() da migration para desfazer a última alteração.
