@@ -10,4 +10,14 @@ class Event extends Model
     [
         'items' => 'array'
     ];
+
+    //INFORMAR PARA A MODEL QUE TEMOS UM CAMPO DE DATA NOVO
+
+    protected $dates = ['date'];
+
+    public function user(){
+        return $this->belongsTo('App\Models\User'); //belongsTo significa pertence a alguem , que seria a um usuario
+
+        /* Este é um método do Eloquent (o ORM do Laravel) que define um relacionamento. Ele está dizendo: "Este evento ($this) pertence a um User". */
+    }
 }

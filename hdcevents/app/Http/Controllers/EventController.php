@@ -8,9 +8,21 @@ use App\Models\Event; //Model de eventos no controller
 class EventController extends Controller
 {
     public function index(){
-         $events = Event::all(); //usar todos os eventos URM do banco aqui
+        $search = request('search');
 
-    return view('welcome',['events' =>$events]);
+        if($search){//se a busca estiver preenchida ira retornar isso
+            $events = Event::where([
+                ['title', 'like' , '%'.$search.'%'] //like para pegar o % para ver oque pode ter na frente ou atras da plavra
+            ])->get();//where para filtrar  as pesquisas
+//metodo get para trazeer o dados
+
+        }else{ //se nao ira para tela inicial
+            $events = Event::all();
+        }
+
+        /*  $events = Event::all(); //usar todos os eventos URM do banco aqui */
+
+    return view('welcome',['events' => $events , 'search' => $search]);
     }
 
     //action create
@@ -28,6 +40,7 @@ class EventController extends Controller
       $event->private = $request->private;
       $event->description = $request->description;
       $event->items = $request->items;
+      $event->date = $request->date;
 
       // Lógica para upload de imagem
       // Verifica se um arquivo de imagem foi enviado no formulário e se o upload é válido.
@@ -48,6 +61,11 @@ class EventController extends Controller
           // Atribui o nome da imagem ao campo 'image' do objeto $event, para ser salvo no banco.
           $event->image = $imageName;
       }
+
+      $user = auth()->user(); // Pega o usuário logado
+      $event->user_id = $user->id; //pega o id do usuario
+
+
       $event->save(); //para salvar no banco
 
       //REDIRIONAR PARA UMA PAGINA QUE E A HOME

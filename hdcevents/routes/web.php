@@ -27,9 +27,9 @@ PUT: atualiza um recurso existente (e se não existir, pode criar dependendo da 
 
 
 //O / aqui e o nome que vai querer ser chamada por exemplo no link
-Route::get('/', [EventController::class, 'index' /* Nome da class que e EventController e index que e o metodo */] ); //Conectar ao
+Route::get('/', [EventController::class, 'index' /* Nome da class que e EventController e index que e o metodo */]); //Conectar ao
 //get e receber dados
-Route::get('/events/create', [EventController::class, 'create' /* esse entre aspas e o nome do metodo */ ] );
+Route::get('/events/create', [EventController::class, 'create' /* esse entre aspas e o nome do metodo */ ] )->middleware('auth'); //middleware('auth') e para proteger a rota, ou seja, so pode acessar se estiver logado
 
 Route::get('events/{id}', [EventController::class, 'show']); //o show e para mostrar um registro especifico do banco
 
@@ -68,3 +68,13 @@ Route::get('/produto/{id?}',function($id = null){ //passa passoa a passo os id
 //tem que passar um parametro se nao tiver o ? se nao a apagina da erro
     return view('product', ['id' => $id]);
 }); */
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

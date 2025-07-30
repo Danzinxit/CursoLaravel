@@ -33,9 +33,25 @@ rel="stylesheet">
             <li>
                 <a href="/events/create" class="nav-link" >Criar Eventos</a>
             </li>
+                @auth {{-- links para se tiver autenticado no sistema --}}
+                    <li>
+                <a href="/dashboard"class="nav-link">Meus eventos</a>
+            </li>
             <li>
+                <form action="/logout" method="POST">
+                @csrf  {{-- Ele serve para proteger sua aplicação contra ataques do tipo CSRF (Cross-Site Request Forgery), ou em português, Falsificação de Solicitação Entre Sites. --}}
+                <a href="logout" class="nav-link" onclick="event.preventDefault(); this.closest('form').submit();">Sair</a>
+                </form>
+            </li>
+                @endauth
+                @guest {{-- eles irao sumir se voce estiver conectado la no header --}}
+                <li>
                 <a href="/login"class="nav-link">Entrar</a>
             </li>
+            <li>
+                <a href="/register"class="nav-link">Registrar</a>
+            </li>
+            @endguest
              <li>
                 <a href="/contact"class="nav-link">Contato</a>
             </li>
