@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event; //Model de eventos no controller
+use App\Models\User; //Model de usuarios no controller
 
 class EventController extends Controller
 {
@@ -78,7 +79,10 @@ class EventController extends Controller
     public function show($id){
         $event = Event::findOrFail($id);
 
-        return view('events.show' , ['event' => $event]); //esse event e da model Event
+        //ISSO E PARA SABER O DONO DO EVENTO:
+        $eventOwner = User::where('id', $event->user_id)->first()->toArray(); //pega o dono do evento //toArray e para transformar aqueles dados em arrays
+
+        return view('events.show' , ['event' => $event, 'eventOwner' => $eventOwner]); //esse event e da model Event
     }
 
 
