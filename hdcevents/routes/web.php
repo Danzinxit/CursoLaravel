@@ -36,6 +36,7 @@ Route::get('events/{id}', [EventController::class, 'show']); //o show e para mos
 //ROTA DE POST PARA ENVIAR DADOS DO FORMULARIO
 //E so /events poque ele vai enviar dados e nao trazer dados
 Route::post('/events' , [EventController::class, 'store']);
+Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth');
 
 Route::get('/contact', function () {
     return view('contact'); //o primeiro nome e sempre o primerio nome do arquivo que criei na view
@@ -74,7 +75,4 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
 });
