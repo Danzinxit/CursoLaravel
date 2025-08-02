@@ -36,11 +36,13 @@ Route::get('events/{id}', [EventController::class, 'show']); //o show e para mos
 //ROTA DE POST PARA ENVIAR DADOS DO FORMULARIO
 //E so /events poque ele vai enviar dados e nao trazer dados
 Route::post('/events' , [EventController::class, 'store']);
+Route::delete('/events/{id}', [EventController::class, 'destroy']); //rota de deletar
 Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth');
 
 Route::get('/contact', function () {
     return view('contact'); //o primeiro nome e sempre o primerio nome do arquivo que criei na view
 });
+
 
 
 
