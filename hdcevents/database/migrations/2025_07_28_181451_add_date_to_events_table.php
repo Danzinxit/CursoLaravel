@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        //De data
         Schema::table('events', function (Blueprint $table) {
             $table->dateTime('date');
         });

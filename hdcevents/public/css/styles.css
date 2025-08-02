@@ -296,3 +296,9 @@ ITEMS  */
 #items-list-li{
     display: flex;
 }
+
+/*Edit Page */
+.img-preview{
+    width: 100px;
+    margin-top: 20px;
+}

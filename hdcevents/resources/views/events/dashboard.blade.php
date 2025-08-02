@@ -42,7 +42,7 @@
                                         <td>{{ $event->participants_count ?? 0 }}</td>
                                         <td class="text-end">
                                             <div class="d-flex justify-content-end gap-2">
-                                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                                <a href="/events/edit/{{ $event->id }}" class="btn btn-outline-primary btn-sm">
                                                     <i class="bi bi-pencil"></i> Editar
                                                 </a>
                                                 <form action="/events/{{$event->id}}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este evento?')">

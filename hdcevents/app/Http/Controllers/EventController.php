@@ -98,6 +98,39 @@ public function destroy($id){
 
 }
 
+public function edit($id){
+    $event = Event::findOrFail($id);//Event e a Model
+
+    return view('events.edit' , ['event' => $event]);
+}
+
+public function update(Request $request){ //request e a requisiçao que veio para o update com todos os valores
+    $data = $request->all();
+
+    //com imagem agora da para fazer o update com a imagem alterando:
+
+    if ($request->hasFile('image') && $request->file('image')->isValid()) {
+          // Pega o arquivo de imagem que veio na requisição.
+          $requestImage = $request->image;
+
+          // Pega a extensão do arquivo (ex: jpg, png).
+          $extension = $requestImage->extension();
+
+          // Cria um nome de arquivo único para a imagem para evitar nomes duplicados.
+          $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+
+          // Move o arquivo de imagem para o diretório 'public/img/events'.
+          $requestImage->move(public_path('img/events'), $imageName);
+
+          // Atribui o nome da imagem ao campo 'image' do objeto $event, para ser salvo no banco.
+          $data['image'] = $imageName;
+      }
+
+    Event::findOrFail($request->id)->update($data);
+     return redirect('/dashboard')->with('msg' , 'Evento Editado com sucesso!');
+
+}
+
 }
 
 

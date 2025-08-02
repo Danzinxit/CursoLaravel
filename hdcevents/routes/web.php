@@ -36,7 +36,12 @@ Route::get('events/{id}', [EventController::class, 'show']); //o show e para mos
 //ROTA DE POST PARA ENVIAR DADOS DO FORMULARIO
 //E so /events poque ele vai enviar dados e nao trazer dados
 Route::post('/events' , [EventController::class, 'store']);
-Route::delete('/events/{id}', [EventController::class, 'destroy']); //rota de deletar
+Route::delete('/events/{id}', [EventController::class, 'destroy'])->middleware('auth'); //rota de deletar
+Route::get('/events/edit/{id}', [EventController::class, 'edit'])->middleware('auth');
+Route::put('/event/update/{id}' , [EventController::class, 'update'])->middleware('auth'); //rota put e de atualiza
+
+
+
 Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth');
 
 Route::get('/contact', function () {
