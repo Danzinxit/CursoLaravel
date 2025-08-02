@@ -94,7 +94,8 @@ class EventController extends Controller
 public function destroy($id){
     Event::findOrFail($id)->delete(); //findOrfail ele ve se ele exise
 
-    return redirect('/dashboard')->width('msg' , 'Evento Excluido com sucesso!');
+    return redirect('/dashboard')->with('msg' , 'Evento Excluido com sucesso!');
+
 }
 
 }
