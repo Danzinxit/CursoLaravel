@@ -88,11 +88,19 @@ class EventController extends Controller
         $user = auth()->user(); // Pega o usuário logado
         $events = $user->events;
 
-        return view('events.dashboard', ['events' => $events]);
+        $eventsAsParticipant = $user->eventsAsParticipant;
+
+        return view('events.dashboard', ['events' => $events , 'eventsasparticipant' => $eventsAsParticipant ]);
 }
 
 public function destroy($id){
-    Event::findOrFail($id)->delete(); //findOrfail ele ve se ele exise
+     $event = Event::findOrFail($id);
+
+    // "Ok, antes de deletar o evento, remova todos os participantes associados a ele."
+    $event->users()->detach();
+
+    // Sua linha original, que agora vai funcionar sem problemas:
+    $event->delete();
 
     return redirect('/dashboard')->with('msg' , 'Evento Excluido com sucesso!');
 
@@ -100,6 +108,13 @@ public function destroy($id){
 
 public function edit($id){
     $event = Event::findOrFail($id);//Event e a Model
+
+    $user = auth()->user();
+
+    if($user->id != $event->user_id){
+        return redirect('/dashboard');
+    } //evitar que um usuario que nao e dono do evento edite isso
+
 
     return view('events.edit' , ['event' => $event]);
 }
@@ -130,6 +145,17 @@ public function update(Request $request){ //request e a requisiçao que veio par
      return redirect('/dashboard')->with('msg' , 'Evento Editado com sucesso!');
 
 }
+
+public function joinEvent($id /* id do evento */){ // nova action
+    $user = auth()->user(); //pegar o ussuario assim
+
+    $user->eventsAsParticipant()->attach($id); //metodo que criei la na model usuario , e esse attach vai preencher os dados e coluna da tabela do evento
+
+    $event = Event::findOrFail($id);
+
+    return redirect('/dashboard')->with('msg', 'Sua presença esta confirmada no evento!');
+}
+
 
 }
 

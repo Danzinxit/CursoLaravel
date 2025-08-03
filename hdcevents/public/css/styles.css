@@ -1,155 +1,221 @@
-/* GENERAL */
+/* =================================================================
+   1. GERAL E VARIÁVEIS DE TEMA
+   ================================================================= */
+:root {
+    --cor-primaria: #F2A340;
+    --cor-primaria-hover: #C28008;
+    --cor-texto-escuro: #212121;
+    --cor-texto-claro: #757575;
+    --cor-fundo-escuro: #353E48;
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Roboto';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-min-height: 100vh; /* tela usuario o minimo  */
-padding-bottom: 100px;
-position: relative;
-}
-header{
-    background-color: #FFF;
-    border-bottom: 1px solid #CCC;
-}
-.row{
-    margin : 0;
-}
-.container-fluid{
-    padding:  0;
-}
-.btn-primary{
-    background-color: #F2A340;
-    border: 2px solid #C28008;
-}
-.btn-primary:hover{
-    background-color: #C28008;
-    border-color: #C28008;
+    /* Sugestão de fonte moderna, com fallback para a sua original */
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    background-color: #f8f9fa; /* Fundo cinza bem claro */
 }
 
-/*navbar*/
-
-#navbar img{
-width: 50px;
-}
-#navbar{
-    justify-content: space-between;
-    background-color: white;
-    padding: 5px 0;
-}
-#navbar a{
-    font-size: 14px;
-    color: #757575;
-}
-#navbar a:hover {
-    color: #F2A340;
+/* Transições suaves para botões e links */
+a, button {
+    transition: all 0.3s ease;
 }
 
+/* =================================================================
+   2. OVERRIDES DO BOOTSTRAP
+   ================================================================= */
+.btn-primary {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria-hover);
+    font-weight: 600;
+}
 
-/*Search Container */
+.btn-primary:hover {
+    background-color: var(--cor-primaria-hover);
+    border-color: var(--cor-primaria-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
-#search-container{
+.text-primary {
+    color: var(--cor-primaria) !important;
+}
+
+/* =================================================================
+   3. HEADER & NAVBAR
+   ================================================================= */
+.navbar-brand img {
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand img:hover {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.nav-link {
+    font-size: 1rem;
+    color: var(--cor-texto-claro);
+}
+
+.nav-link:hover {
+    color: var(--cor-primaria);
+}
+
+/* Estilo para o link da página ativa na navbar */
+.nav-link.active {
+    font-weight: 600;
+    color: var(--cor-primaria) !important;
+}
+
+/* Ajuste no botão de registrar */
+.navbar .btn-primary {
+    --bs-btn-padding-y: .25rem;
+    --bs-btn-padding-x: .75rem;
+    --bs-btn-font-size: .875rem;
+}
+
+/* =================================================================
+   4. FOOTER
+   ================================================================= */
+.footer-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: #FFFFFF;
+    padding-left: 5px;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    color: var(--cor-primaria);
+    transform: translateY(-3px);
+}
+
+/* =================================================================
+   5. ESTILOS DE PÁGINAS ESPECÍFICAS
+   ================================================================= */
+
+/* --- PÁGINA INICIAL --- */
+
+#search-container {
     background-image: url("../img/show.jpg");
     background-size: cover;
     background-position: center;
-    height: 400px;
-    padding: 50px;
-    text-align: center;
-}
-#search-container h1{
-    color: #F2A340;
-    margin-bottom: 30px;
-    font-weight: 900;
+    color: white; /* Melhor contraste com a imagem de fundo */
 }
 
-#search-container form {
-    width: 50%;
-    margin: 0 auto;
+#search-container h1 {
+    color: #FFF; /* Cor branca para o título */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Sombra para legibilidade */
 }
 
-#events-container{
-    padding: 50px;
+#events-container {
+    padding: 50px 0;
 }
 
-#events-container h2{
-    margin-bottom: 10px; /*afastar os cards*/
+/* Estilos para os cards de evento */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#events-container .subtitle{
-    color: #757575;
-    margin-bottom: 30px;
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-.cards-container{
-    display: flex;
-}
-#events-container card{
-    flex: 1 1 0;
-    max-width: 25px;
-    border-radius: 10px;
-    padding: 0;
-    margin: 5px; /*espaçar os cards*/
-}
-
-#events-container img{
-    max-height: 150px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.card .card-date {
-    font-size: 12px;
-    color: #CCC;
-}
 .card .card-title {
-    color: #212121;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 30px; /*afastar as informacoes*/
-}
-.card-participantes{
-    font-size: 14px;
-    color: #757575;
+    color: var(--cor-texto-escuro);
+    font-weight: 600;
 }
 
-/*FOOTER*/
-
-footer{
-    text-align: center;
-    background-color: #353E48;
-    color: #FFF;
-    padding: 30px; /*aproximar textos do centro */
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-footer p {
-    margin-bottom : 0;
+.card .card-text {
+    color: var(--cor-texto-claro);
 }
 
+/* --- PÁGINA DE CRIAÇÃO DE EVENTO --- */
 
-/* EVENT CREATE PAGE */
-
-#event-create-container{
+#event-create-container {
     padding: 30px;
 }
-#event-create-container label{
-    font-weight: bold;
+
+#event-create-container label,
+.form-label {
+    font-weight: 600;
+    color: var(--cor-texto-escuro);
 }
-#event-create-container input,
-#event-create-container select,
-#event-create-container textarea{
-    font-size: 15px;
+
+/* Melhora para os checkboxes */
+.form-check {
+    margin-bottom: 0.5rem;
 }
+
+/* --- PÁGINA DE DETALHES DO EVENTO --- */
+
+#image-container img {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#info-container h1 {
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+#info-container p {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#info-container ion-icon {
+    font-size: 24px;
+    color: var(--cor-primaria);
+    margin-right: 10px;
+}
+
+#description-container {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #dee2e6; /* Cor padrão de borda do Bootstrap */
+}
+
+#item-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+/* --- PÁGINA DE EDIÇÃO DE EVENTO --- */
+.img-preview {
+    width: 100px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+
+/* =================================================================
+   6. COMPONENTES E ANIMAÇÕES
+   ================================================================= */
+
 /* Pop-up de mensagem melhorado */
 .msg-popup {
     position: fixed;
     top: 20px;
     left: 50%;
-    transform: translateX(-50%); /* Centraliza horizontalmente */
+    transform: translateX(-50%);
     z-index: 1050;
     width: auto;
     max-width: 90%;
@@ -161,14 +227,8 @@ footer p {
     font-size: 1.1rem;
     font-weight: 500;
     animation: slideIn 0.5s ease-out forwards, slideOut 0.5s ease-in 4.5s forwards;
-    overflow: hidden; /* Para a barra de progresso não sair */
-}
-
-/* Ícone dentro do pop-up */
-.msg-popup ion-icon {
-    font-size: 1.8rem;
-    margin-right: 10px;
-    vertical-align: middle;
+    overflow: hidden;
+    gap: 0.75rem; /* Espaço entre ícone e texto */
 }
 
 /* Barra de progresso */
@@ -180,125 +240,21 @@ footer p {
     height: 5px;
     width: 100%;
     background-color: rgba(0,0,0,0.2);
-    animation: progressBar 4s linear 0.5s forwards; /* Inicia após a animação de entrada */
+    animation: progressBar 4s linear 0.5s forwards;
 }
 
-/* Animação de entrada (deslizar de cima) */
+/* Animações (mantidas do seu código original) */
 @keyframes slideIn {
-    from {
-        top: -100px;
-        opacity: 0;
-    }
-    to {
-        top: 20px;
-        opacity: 1;
-    }
+    from { top: -100px; opacity: 0; }
+    to { top: 20px; opacity: 1; }
 }
 
-/* Animação de saída (deslizar para cima) */
 @keyframes slideOut {
-    from {
-        top: 20px;
-        opacity: 1;
-    }
-    to {
-        top: -100px;
-        opacity: 0;
-    }
+    from { top: 20px; opacity: 1; }
+    to { top: -100px; opacity: 0; }
 }
 
-/* Animação da barra de progresso */
 @keyframes progressBar {
-    from {
-        width: 100%;
-    }
-    to {
-        width: 0%;
-    }
-}
-
-/* EVENT PAGE */
-
-/* Estilos da página de detalhes do evento (events/show) */
-
-/* Container principal da imagem e informações */
-#image-container,
-#info-container {
-  margin-bottom: 20px;
-}
-
-/* Imagem do evento */
-#image-container img {
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Container de informações do evento */
-#info-container {
-  padding-left: 30px;
-}
-
-#info-container h1 {
-  font-size: 36px;
-  font-weight: 900;
-  margin-bottom: 20px;
-}
-
-/* Parágrafos com ícones (local, participantes, dono) */
-#info-container p {
-  margin: 0;
-  display: flex;
-  align-items: center;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-#info-container ion-icon {
-  font-size: 24px;
-  color: #F2A340; /* Cor de destaque para os ícones */
-  margin-right: 10px;
-}
-
-/* Botão de confirmar presença */
-#event-submit {
-  margin-top: 20px;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 12px 25px;
-}
-
-/* Container da descrição do evento */
-#description-container {
-  margin-top: 30px;
-  padding-top: 30px;
-  border-top: 1px solid #CCC; /* Linha para separar a descrição */
-}
-
-#description-container h3 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-.event-description {
-  color: #333;
-  line-height: 1.7;
-  font-size: 16px;
-}
-/*
-ITEMS  */
-
-#item-list{
-    list-style: none;
-    padding-left: 0;
-}
-
-#items-list-li{
-    display: flex;
-}
-
-/*Edit Page */
-.img-preview{
-    width: 100px;
-    margin-top: 20px;
+    from { width: 100%; }
+    to { width: 0%; }
 }

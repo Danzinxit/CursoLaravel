@@ -23,4 +23,8 @@ class Event extends Model
 
         /* Este é um método do Eloquent (o ORM do Laravel) que define um relacionamento. Ele está dizendo: "Este evento ($this) pertence a um User". */
     }
+
+    public function users(){
+        return $this->belongsToMany('App\Models\User');
+    }
 }

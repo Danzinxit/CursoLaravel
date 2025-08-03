@@ -68,4 +68,8 @@ class User extends Authenticatable
     public function events(){
         return $this->hasMany('App\Models\Event'); //Has many significa tem muitos eventos
     }
+
+    public function eventsAsParticipant(){
+        return $this->belongsToMany('App\Models\Event');
+    }
 }

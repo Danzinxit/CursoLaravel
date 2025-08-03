@@ -48,6 +48,8 @@ Route::get('/contact', function () {
     return view('contact'); //o primeiro nome e sempre o primerio nome do arquivo que criei na view
 });
 
+Route::post('/events/join/{id}', [EventController::class, 'joinEvent'])->middleware('auth');    //id do proprio evento /EventController e a action
+
 
 
 
