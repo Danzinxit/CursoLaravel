@@ -49,6 +49,8 @@ Route::get('/contact', function () {
 });
 
 Route::post('/events/join/{id}', [EventController::class, 'joinEvent'])->middleware('auth');    //id do proprio evento /EventController e a action
+Route::delete('/events/leave/{id}', [EventController::class, 'leaveEvent'])->middleware('auth');    //id do proprio evento /EventController e a action
+
 
 
 

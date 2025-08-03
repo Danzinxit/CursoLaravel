@@ -243,6 +243,15 @@ a, button {
     animation: progressBar 4s linear 0.5s forwards;
 }
 
+.already-joined-msg{
+    margin: 15px 0;
+    color: red;
+    background-color: #dee2e6;
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    width: 275px;
+}
+
 /* Animações (mantidas do seu código original) */
 @keyframes slideIn {
     from { top: -100px; opacity: 0; }

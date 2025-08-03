@@ -79,10 +79,25 @@ class EventController extends Controller
     public function show($id){
         $event = Event::findOrFail($id);
 
+        $user = auth()->user();
+        $hasUserJoined = false;
+
+        if($user){
+            $userEvents = $user->eventsAsParticipant->toArray();
+
+            foreach($userEvents as $userEvent) // todos os eventos do usuario esse as $userEvent
+            {
+                if(/* e esse e o id que vem dos usuarios que ele participa que e o ->eventAsParticipant */ $userEvent['id'] == $id /* id de evento que vem do meu request la em cima do metodo */){
+                    $hasUserJoined = true;
+                }
+            }
+        }
+
         //ISSO E PARA SABER O DONO DO EVENTO:
         $eventOwner = User::where('id', $event->user_id)->first()->toArray(); //pega o dono do evento //toArray e para transformar aqueles dados em arrays
 
-        return view('events.show' , ['event' => $event, 'eventOwner' => $eventOwner]); //esse event e da model Event
+        //isso envia la para o front
+        return view('events.show' , ['event' => $event, 'eventOwner' => $eventOwner , 'hasUserJoined' => $hasUserJoined]); //esse event e da model Event
     }
     public function dashboard(){
         $user = auth()->user(); // Pega o usuário logado
@@ -153,7 +168,19 @@ public function joinEvent($id /* id do evento */){ // nova action
 
     $event = Event::findOrFail($id);
 
-    return redirect('/dashboard')->with('msg', 'Sua presença esta confirmada no evento!');
+    return redirect('/dashboard')->with('msg', 'Sua presença esta confirmada no evento!' . $event->title);
+}
+
+public function leaveEvent($id)
+{
+    //ESSE AQUI E O BOTAO SAIR DO EVENTO
+    $user = auth()->user();
+
+    $user->eventsAsParticipant()->detach($id);
+
+     $event = Event::findOrFail($id);
+     return redirect('/dashboard')->with('msg', 'Voce saiu com sucesso do evento : ' . $event->title);
+
 }
 
 

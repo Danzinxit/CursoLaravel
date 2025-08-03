@@ -91,7 +91,6 @@
                                     <th scope="col" class="ps-4">#</th>
                                     <th scope="col">Nome Evento</th>
                                     <th scope="col">Participantes</th>
-                                    <th scope="col" class="text-end pe-4">Ações</th> {{-- CORREÇÃO: Mantida a coluna de ações --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -104,15 +103,15 @@
                                             </a>
                                         </td>
                                         <td>{{ count($event->users) }}</td>
-                                        <td class="text-end pe-4">
-                                            {{-- CORREÇÃO: Adicionada a célula <td> de ações que estava faltando --}}
-                                            <form action="/events/leave/{{ $event->id }}" method="POST" onsubmit="return confirm('Tem certeza que deseja sair deste evento?')">
-                                                @csrf
-                                                @method("DELETE")
-                                                <button type="submit" class="btn btn-outline-warning btn-sm">
-                                                    <i class="bi bi-box-arrow-right"></i> Sair do Evento
-                                                </button>
-                                            </form>
+                                                   <td>
+                                                    <form action="/events/leave/{{$event->id}}" method="POST">
+                                                    @csrf
+                                                    @method("DELETE")
+                                                    <button type="submit" class="btn btn-danger delete-btn">
+                                                         <i class="bi bi-box-arrow-right"></i> Sair do Evento
+                                                    </button>
+                                                    </form>
+                                                   </td>
                                         </td>
                                     </tr>
                                 @endforeach
